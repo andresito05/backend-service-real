@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Juegosya } from "./entities/products";
+import { Juegosya } from "./entities/Juegosya";
 
 export const AppDataSource = new DataSource({
     type: "sqlite",

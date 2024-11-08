@@ -4,7 +4,7 @@ const swaggerOptions: Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Backend Service API",
+      title: "Backend Service API- Andres felipe",
       version: "1.0.0",
       description: "API para Catálogo de Productos y Gestión de Pedidos",
     },

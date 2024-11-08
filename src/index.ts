@@ -1,7 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
 import { AppDataSource } from "./data-source";
-import productRoutes from "./Routers/productRoutes";
+import productRoutes from "./routes/productRoutes";
 import swaggerUI from "swagger-ui-express";
 import swaggerSpec from "./swagger/swagger";
 
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use("/api/products", productRoutes);
+app.use("/api/product", productRoutes);
 
 // Documentación Swagger
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
@@ -25,7 +25,7 @@ AppDataSource.initialize()
       console.log(`Servidor corriendo en http://localhost:${PORT}\n`);
 
       console.log(`Endpoints:`);
-      console.log(`API Products http://localhost:${PORT}/api/products`);
+      console.log(`API product http://localhost:${PORT}/api/product`);
 
       console.log(`Documentación:`);
       console.log(`Swagger en http://localhost:${PORT}/api-docs`);

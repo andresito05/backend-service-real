@@ -1,60 +1,60 @@
 import { Router } from "express";
 import {
-  getAllProducts,
-  getProductById,
-  createProduct,
-  updateProduct,
-  deleteProduct,
+  getAllJuegosya,
+  getJuegosyaById,
+  createJuegosya,
+  updateJuegosya,
+  deleteJuegosya,
 } from "../controllers/productController";
 
 const productRoutes = Router();
 
 /**
  * @swagger
- * tags:
- *   name: Products
+ * tags: 
+ *   name: Juegosya
  *   description: CRUD relacionado con productos
  */
 
 /**
  * @swagger
- * /api/products:
+ * /api/product:
  *   get:
  *     summary: Obtener todos los productos
- *     tags: [Products]
- *     responses:
+ *     tags: [Juegosya]
+ *     responses:  
  *       200:
  *         description: Lista de productos
  */
-productRoutes.get("/", getAllProducts);
+productRoutes.get("/", getAllJuegosya);
 
 /**
  * @swagger
- * /api/products/{id}:
- *   get:
- *     summary: Obtener un producto por ID
- *     tags: [Products]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID del producto
- *     responses:
- *       200:
- *         description: Detalles del producto
- *       404:
- *         description: Producto no encontrado
+ * /api/product/{id}:
+ *     get:
+ *       summary: Obtener un producto por ID
+ *       tags: [Juegosya]
+ *       parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           schema:
+ *             type: integer
+ *           description: ID del producto
+ *       responses:
+ *          200:
+ *            description: Detalles del producto
+ *          404:
+ *            description: Producto no encontrado
  */
-productRoutes.get("/:id", getProductById);
+productRoutes.get("/:id", getJuegosyaById);
 
 /**
  * @swagger
- * /api/products:
+ * /api/product:
  *   post:
  *     summary: Crear un nuevo producto
- *     tags: [Products]
+ *     tags: [Juegosya]
  *     requestBody:
  *       required: true
  *       content:
@@ -78,14 +78,14 @@ productRoutes.get("/:id", getProductById);
  *       500:
  *         description: Error en el servidor
  */
-productRoutes.post("/", createProduct);
+productRoutes.post("/", createJuegosya);
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /api/product/{id}:
  *   put:
  *     summary: Actualizar un producto existente
- *     tags: [Products]
+ *     tags: [Juegosya]
  *     parameters:
  *       - in: path
  *         name: id
@@ -100,11 +100,11 @@ productRoutes.post("/", createProduct);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               name: 
  *                 type: string
- *               description:
+ *               description: 
  *                 type: string
- *               price:
+ *               price: 
  *                 type: number
  *     responses:
  *       200:
@@ -114,14 +114,14 @@ productRoutes.post("/", createProduct);
  *       500:
  *         description: Error en el servidor
  */
-productRoutes.put("/:id", updateProduct);
+productRoutes.put("/:id", updateJuegosya);
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /api/product/{id}:
  *   delete:
  *     summary: Eliminar un producto
- *     tags: [Products]
+ *     tags: [Juegosya]
  *     parameters:
  *       - in: path
  *         name: id
@@ -137,6 +137,6 @@ productRoutes.put("/:id", updateProduct);
  *       500:
  *         description: Error en el servidor
  */
-productRoutes.delete("/:id", deleteProduct);
+productRoutes.delete("/:id", deleteJuegosya);
 
 export default productRoutes;

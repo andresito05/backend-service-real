@@ -1,27 +1,27 @@
 import { Request, Response } from "express"; 
 import { AppDataSource } from "../data-source";
-import { Juegosya } from "../entities/products";
+import { Juegosya } from "../entities/Juegosya";
 
 const productRepository = AppDataSource.getRepository(Juegosya); 
 
 // GET - obtener todos los productos 
-export const getAllProducts = async ( red: Request, res: Response) => {
+export const getAllJuegosya = async ( req: Request, res: Response) => {
     try {
-        const Juegosya = await productRepository.find(); 
-        res.json(Juegosya);
+        const product = await productRepository.find(); 
+        res.json(product);
     } catch (error) {
     res.status(500).json({ message: "Error al obtener productos."}); 
     }
 };
 
 // GET by ID - obtener productos por ID 
-export const getProductById = async( req: Request, res: Response) => {
+export const getJuegosyaById = async( req: Request, res: Response) => {
     try {
-        const Juegosya = await productRepository.findOneBy({
+        const product = await productRepository.findOneBy({
             id: parseInt(req.params.id), 
         }); 
-        if(Juegosya){ 
-            res.json(Juegosya); 
+        if(product){ 
+            res.json(product); 
         } else {
             res.status(404).json ({ message: "Producto no encontrado"}); 
         }
@@ -31,38 +31,38 @@ export const getProductById = async( req: Request, res: Response) => {
 }; 
 
 // POST crear un nuevo producto 
-export const createProduct = async(req: Request, res: Response) =>{
+export const createJuegosya = async(req: Request, res: Response) =>{
     try {
         const { name,description,price,genero} = req.body;
-        const juegosya = new Juegosya(); 
-        juegosya.name = name; 
-        juegosya.description = description;
-        juegosya.price = price; 
-        juegosya.genero = genero; 
+        const product = new Juegosya(); 
+        product.name = name; 
+        product.description = description;
+        product.price = price; 
+        product.genero = genero; 
 
-        await productRepository.save(juegosya);
-        res.status(201).json(juegosya);
+        await productRepository.save(product);
+        res.status(201).json(product);
     } catch(error) {
         res.status(500).json({ message: "Error al crear el producto."}); 
     }
 }; 
 
 //PUT Actualizar un producto existente 
-export const updateProduct = async(req: Request, res: Response) => {
+export const updateJuegosya = async(req: Request, res: Response) => {
     try {
         const { name,description,price,genero} = req.body; 
-        const Juegosya = await productRepository.findOneBy({
+        const product = await productRepository.findOneBy({
             id: parseInt(req.params.id), 
         }); 
 
-        if(Juegosya) {
-            Juegosya.name = name ?? Juegosya.name;
-            Juegosya.description = description ?? Juegosya.description;
-            Juegosya.price = price ?? Juegosya.price; 
-            Juegosya.genero = genero ?? Juegosya.genero;
+        if(product) {
+            product.name = name ?? product.name;
+            product.description = description ?? product.description;
+            product.price = price ?? product.price; 
+            product.genero = genero ?? product.genero;
             
-            await productRepository.save(Juegosya);
-            res.json(Juegosya);
+            await productRepository.save(product);
+            res.json(product);
         } else {
             res.status(404).json({ message: "Producto no encontrado."});
         }
@@ -72,14 +72,14 @@ export const updateProduct = async(req: Request, res: Response) => {
 }; 
 
 //DELETE borrar un producto 
-export const deleteProduct = async(req: Request, res: Response) =>{
+export const deleteJuegosya = async(req: Request, res: Response) =>{
     try {
-        const Juegosya = await productRepository.findOneBy({
+        const product = await productRepository.findOneBy({
             id: parseInt(req.params.id), 
         }); 
 
-        if (Juegosya) {
-            await productRepository.remove(Juegosya)
+        if (product) {
+            await productRepository.remove(product)
             res.json({ message: "Producto eliminado"});
         } else {
             res.status(404).json({ message: "Producto no encontrado."}); 
