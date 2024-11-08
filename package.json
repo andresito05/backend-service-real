@@ -5,7 +5,8 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "build": "tsc",
-    "prod": "node dist/index.js"
+    "prod": "node dist/index.js",
+    "test": "echo \"Error: no testspecified\" && exit 1"
   },
   "keywords": [],
   "author": "",

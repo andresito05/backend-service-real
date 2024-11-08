@@ -5,7 +5,7 @@ import { Juegosya } from "../entities/Juegosya";
 const productRepository = AppDataSource.getRepository(Juegosya); 
 
 // GET - obtener todos los productos 
-export const getAllJuegosya = async ( req: Request, res: Response) => {
+export const getAllJuegosya = async ( red: Request, res: Response) => {
     try {
         const product = await productRepository.find(); 
         res.json(product);
@@ -33,13 +33,11 @@ export const getJuegosyaById = async( req: Request, res: Response) => {
 // POST crear un nuevo producto 
 export const createJuegosya = async(req: Request, res: Response) =>{
     try {
-        const { name,description,price,genero} = req.body;
+        const { name,description,price,} = req.body;
         const product = new Juegosya(); 
         product.name = name; 
         product.description = description;
         product.price = price; 
-        product.genero = genero; 
-
         await productRepository.save(product);
         res.status(201).json(product);
     } catch(error) {
@@ -50,7 +48,7 @@ export const createJuegosya = async(req: Request, res: Response) =>{
 //PUT Actualizar un producto existente 
 export const updateJuegosya = async(req: Request, res: Response) => {
     try {
-        const { name,description,price,genero} = req.body; 
+        const { name,description,price,} = req.body; 
         const product = await productRepository.findOneBy({
             id: parseInt(req.params.id), 
         }); 
@@ -59,7 +57,7 @@ export const updateJuegosya = async(req: Request, res: Response) => {
             product.name = name ?? product.name;
             product.description = description ?? product.description;
             product.price = price ?? product.price; 
-            product.genero = genero ?? product.genero;
+           
             
             await productRepository.save(product);
             res.json(product);

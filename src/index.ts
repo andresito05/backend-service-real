@@ -23,10 +23,8 @@ AppDataSource.initialize()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Servidor corriendo en http://localhost:${PORT}\n`);
-
       console.log(`Endpoints:`);
-      console.log(`API product http://localhost:${PORT}/api/product`);
-
+      console.log(`API Juegosya http://localhost:${PORT}/api/products\n`);
       console.log(`Documentación:`);
       console.log(`Swagger en http://localhost:${PORT}/api-docs`);
     });

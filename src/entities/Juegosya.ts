@@ -14,6 +14,5 @@ export class Juegosya {
     @Column("decimal")
     price!: number;
     
-    @Column("text")
-    genero!: string;
+   
 }   
