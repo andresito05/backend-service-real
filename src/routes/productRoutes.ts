@@ -65,6 +65,7 @@ productRoutes.get("/:id", getJuegosyaById);
  *               - name
  *               - description
  *               - price
+ *               - genre
  *             properties:
  *               name:
  *                 type: string
@@ -72,6 +73,8 @@ productRoutes.get("/:id", getJuegosyaById);
  *                 type: string
  *               price:
  *                 type: number
+ *               genre:
+ *                 type: string
  *     responses:
  *       201:
  *         description: Producto creado
@@ -106,6 +109,8 @@ productRoutes.post("/", createJuegosya);
  *                 type: string
  *               price: 
  *                 type: number
+ *               genre:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Producto actualizado

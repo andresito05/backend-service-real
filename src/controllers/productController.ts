@@ -33,11 +33,12 @@ export const getJuegosyaById = async( req: Request, res: Response) => {
 // POST crear un nuevo producto 
 export const createJuegosya = async(req: Request, res: Response) =>{
     try {
-        const { name,description,price,} = req.body;
+        const { name,description,price, genre} = req.body;
         const product = new Juegosya(); 
         product.name = name; 
         product.description = description;
         product.price = price; 
+        product.genre = genre;
         await productRepository.save(product);
         res.status(201).json(product);
     } catch(error) {
@@ -48,7 +49,7 @@ export const createJuegosya = async(req: Request, res: Response) =>{
 //PUT Actualizar un producto existente 
 export const updateJuegosya = async(req: Request, res: Response) => {
     try {
-        const { name,description,price,} = req.body; 
+        const { name,description,price, genre} = req.body; 
         const product = await productRepository.findOneBy({
             id: parseInt(req.params.id), 
         }); 
@@ -57,7 +58,7 @@ export const updateJuegosya = async(req: Request, res: Response) => {
             product.name = name ?? product.name;
             product.description = description ?? product.description;
             product.price = price ?? product.price; 
-           
+            product.genre = genre ?? product.genre; 
             
             await productRepository.save(product);
             res.json(product);
